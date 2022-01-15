@@ -1,6 +1,12 @@
 import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom';
+import '../_main.scss'
+import '../scss/_navbar.scss'
+
+import { BiUserCircle } from 'react-icons/bi';
+import { BiCartAlt } from 'react-icons/bi';
+import { BiInfoCircle } from 'react-icons/bi';
 
 const Navbar = () => {
 
@@ -8,20 +14,38 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="container-fluid">
-                    <Link className="navbar-brand" to='/'>Navbar</Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <header className='header'>
+                <div className="header-container">
+                    <Link className="header-container__title" to='/'>Tienda</Link>
+                    <input className='header-container__search-bar' placeholder='Buscar Producto'></input>
+                    <div className='header-container__icon-info header-icons'>
+                        <BiInfoCircle />
+                    </div>
+                    <div className='header-container__icon-cart header-icons'>
+                        <BiCartAlt />
+                    </div>
+                    <div className='header-container__icon-login header-icons'>
+                        <BiUserCircle />
+                    </div>
+                    <div className="collapse header-collapse" id="navbarSupportedContent">
+                        <ul className="nvbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 <button className="btn btn-outline-primary" onClick={() => loginWithRedirect()}>Log In</button>
                             </li>
                         </ul>
                     </div>
                 </div>
+            </header>
+
+            <nav className="navbar">
+                <ul className='navbar-list'>
+                    <li className='navbar-list__item'>Hogar y Jardin</li>
+                    <li className='navbar-list__item'>Deportes</li>
+                    <li className='navbar-list__item'>Tecnologia</li>
+                    <li className='navbar-list__item'>Mascotas</li>
+                    <li className='navbar-list__item'>Accesorios</li>
+                    <li className='navbar-list__item'>Vestuario</li>
+                </ul>
             </nav>
         </>
     )
