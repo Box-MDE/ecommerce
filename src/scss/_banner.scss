@@ -1,0 +1,32 @@
+@import '../main';
+
+.banner {
+    width: 100%;
+    height: 45vh;
+
+    .banner-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-image: url('../img/background-img.jpg');
+        background-position: top 20% center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .banner-container__cover {
+            width: 100%;
+            height: 100%;
+            opacity: 0.6;
+            background-color: $black;
+        }
+
+        .banner-container__title {
+            color: $white;
+            font-weight: $regular;
+            position: absolute;
+        }
+    }
+}
