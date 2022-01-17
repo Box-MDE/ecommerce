@@ -1,0 +1,30 @@
+@import '../main';
+
+.content{
+    width: 100%;
+    margin-top: 10%;
+
+    .nav{
+        display: flex;
+        justify-content: center;
+    }
+
+    .tab-content{
+        display: block;
+        justify-content: center;
+    }
+
+    .tab{
+        display: block;
+        justify-content: center;
+        width: 100%;
+
+        .form{
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    
+}
+

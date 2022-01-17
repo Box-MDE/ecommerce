@@ -25,14 +25,7 @@ const Navbar = () => {
                         <BiCartAlt />
                     </div>
                     <div className='header-container__icon-login header-icons'>
-                        <BiUserCircle />
-                    </div>
-                    <div className="collapse header-collapse" id="navbarSupportedContent">
-                        <ul className="nvbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <button className="btn btn-outline-primary" onClick={() => loginWithRedirect()}>Log In</button>
-                            </li>
-                        </ul>
+                       <BiUserCircle onClick={() => loginWithRedirect()}></BiUserCircle>
                     </div>
                 </div>
             </header>
