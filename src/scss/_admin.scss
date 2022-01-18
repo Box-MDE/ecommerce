@@ -8,16 +8,19 @@
         display: flex;
         justify-content: center;
     }
-
-    .tab-content{
-        display: block;
-        justify-content: center;
-    }
-
+    
     .tab{
         display: block;
         justify-content: center;
         width: 100%;
+        height: 100vh;
+        
+        .tab-content{
+            height: 100%;
+            display: block;
+            justify-content: center;
+        }
+    
 
         .form{
             display: flex;
