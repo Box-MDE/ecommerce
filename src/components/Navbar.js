@@ -18,15 +18,18 @@ const Navbar = () => {
                 <div className="header-container">
                     <Link className="header-container__title" to='/'>Tienda</Link>
                     <input className='header-container__search-bar' placeholder='Buscar Producto'></input>
-                    <div className='header-container__icon-info header-icons'>
-                        <BiInfoCircle />
+                    <div className='header-container__icon-content'>
+                        <div className='header-container__icon-info header-icons'>
+                            <BiInfoCircle />
+                        </div>
+                        <div className='header-container__icon-cart header-icons'>
+                            <BiCartAlt />
+                        </div>
+                        <div className='header-container__icon-login header-icons'>
+                           <BiUserCircle onClick={() => loginWithRedirect()}></BiUserCircle>
+                        </div>
                     </div>
-                    <div className='header-container__icon-cart header-icons'>
-                        <BiCartAlt />
-                    </div>
-                    <div className='header-container__icon-login header-icons'>
-                       <BiUserCircle onClick={() => loginWithRedirect()}></BiUserCircle>
-                    </div>
+                    
                 </div>
             </header>
 
