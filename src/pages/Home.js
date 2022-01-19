@@ -20,7 +20,7 @@ const Home = () => {
 
             <div className='catalog'>
                 <div className='catalog-container'>
-                    <Link to="./Product.js">
+                    <Link to="./Product">
                         <div className='product-card'>
                             <div className='product-card__img'></div>
                             <h3 className='product-card__title'>Caja Misteriosa</h3>
