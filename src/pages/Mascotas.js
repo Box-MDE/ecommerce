@@ -5,10 +5,12 @@ import { Link } from 'react-router-dom';
 import '../_main.scss'
 import '../scss/_banner.scss'
 import '../scss/_catalog.scss'
-import { obtenerProductos } from '../utils/api';
+import { obtenerMascotas } from '../utils/api';
 import { nanoid } from 'nanoid';
 
-const Home = () => {
+
+const Mascotas = () => {
+
     const [productos, setProductos] = useState([]);
     const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
     const [loading, setLoading] = useState(false);
@@ -16,7 +18,7 @@ const Home = () => {
     useEffect(() => {
         const fetchProductos = async () => {
             setLoading(true);
-            await obtenerProductos(
+            await obtenerMascotas(
               (response) => {
                 console.log('la respuesta que se recibio fue', response);
                 setProductos(response.data);
@@ -41,41 +43,40 @@ const Home = () => {
             setEjecutarConsulta(true);
         }, []);
 
-    return (
-        <>
-            <Navbar />
+  return (
+    <>
+        <Navbar />
 
-            <div className="banner">
-                <div className="banner-container">
-                    <div className='banner-container__cover'></div>
-                    <h1 className='banner-container__title'>Titulo del Banner</h1>
-                </div>
+        <div className="banner">
+            <div className="banner-container">
+                <div className='banner-container__cover'></div>
+                <h1 className='banner-container__title'>Titulo del Banner</h1>
             </div>
+        </div>
 
-            
-            <div className='catalog'>
-                <div className='catalog-container'>
-                    {productos.map(
-                        (productos) => {
-                            return (                                    
-                                <Link to="./Product">
-                                    <div className='product-card'>
-                                        <DatoProductos key={nanoid()} productos={productos} setEjecutarConsulta={setEjecutarConsulta} />;
-                                    </div>
-                                </Link>                                       
-                            )
-                        }
-                    )}
-                </div>
+
+        <h2>Mascotas</h2>
+
+
+        <div className='catalog'>
+            <div className='catalog-container'>
+                {productos.map(
+                    (productos) => {
+                        return (                                    
+                            <Link to="./Product">
+                                <div className='product-card'>
+                                    <DatoProductos key={nanoid()} productos={productos} setEjecutarConsulta={setEjecutarConsulta} />;
+                                </div>
+                            </Link>                                       
+                        )
+                    }
+                )}
             </div>
+        </div>
 
-            <Footer />
-
-            
-        </>
-
-        
-    )
+        <Footer />
+    </>
+  );
 };
 
 const DatoProductos = ({ productos }) => {
@@ -93,4 +94,4 @@ const DatoProductos = ({ productos }) => {
     )
 }
 
-export default Home
+export default Mascotas;

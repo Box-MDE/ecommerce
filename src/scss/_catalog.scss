@@ -20,6 +20,7 @@
         background-color: darken($white, 4.5);
         border: 0.1rem solid darken($white, 15);
         text-align: center;
+        color: black;
 
         &:hover {
             cursor: pointer;
@@ -41,6 +42,7 @@
         .product-card__title {
             margin-top: 1.4rem;
             margin-bottom: 0;
+            text-decoration: none;
         }
     }
 }

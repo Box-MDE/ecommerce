@@ -7,7 +7,7 @@ import axios from 'axios'
 import 'react-toastify/dist/ReactToastify.css'
 import { toast, ToastContainer } from 'react-toastify'
 
-const Registrar = () => {
+const RegistrarTecnologia = () => {
 
     const [datos, setDatos] = useState({
         titulo:'',
@@ -27,7 +27,7 @@ const Registrar = () => {
         e.preventDefault();
         const options = {
             method: 'POST',
-            url: 'http://localhost:5000/producto/nuevo',
+            url: 'http://localhost:5000/producto/nuevo/tecnologia',
             headers: { 'Content-Type': 'application/json' },
             data:{
                 titulo: datos.titulo,
@@ -48,6 +48,7 @@ const Registrar = () => {
 
     return (
         <>
+        <h2>TECNOLOGIA</h2>
         <div className='form'>
             <form onSubmit={handleSubmit}>
                 <Box
@@ -110,6 +111,6 @@ const Registrar = () => {
         </div>
         </>
     )
-}
+};
 
-export default Registrar
+export default RegistrarTecnologia;

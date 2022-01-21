@@ -1,5 +1,5 @@
 import React from 'react'
-import Registrar from './Registrar'
+import Collapse from './Collapse'
 
 const Tab = () => {
     return (
@@ -14,7 +14,7 @@ const Tab = () => {
             </ul>
 
             <div className="tab-content" id="pills-tabContent">
-                <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"><Registrar /></div>
+                <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"><Collapse /></div>
                 <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">hola2</div>
             </div>
         </>

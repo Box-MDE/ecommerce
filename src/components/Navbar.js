@@ -35,12 +35,12 @@ const Navbar = () => {
 
             <nav className="navbar">
                 <ul className='navbar-list'>
-                    <li className='navbar-list__item'>Hogar y Jardin</li>
-                    <li className='navbar-list__item'>Deportes</li>
-                    <li className='navbar-list__item'>Tecnologia</li>
-                    <li className='navbar-list__item'>Mascotas</li>
-                    <li className='navbar-list__item'>Accesorios</li>
-                    <li className='navbar-list__item'>Vestuario</li>
+                    <Link to='/hogar-y-jardin' className='navbar-list__item'>Hogar y Jardin</Link>
+                    <Link to='/deportes' className='navbar-list__item'>Deportes</Link>
+                    <Link to='/tecnologia' className='navbar-list__item'>Tecnologia</Link>
+                    <Link to='/mascotas' className='navbar-list__item'>Mascotas</Link>
+                    <Link to='/accesorios' className='navbar-list__item'>Accesorios</Link>
+                    <Link to='/vestuario' className='navbar-list__item'>Vestuario</Link>
                 </ul>
             </nav>
         </>
