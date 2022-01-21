@@ -1,7 +1,14 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Home from './pages/Home'
+import Product from './pages/Product'
 import Admin from './pages/Admin'
 import { Auth0Provider } from '@auth0/auth0-react';
+import Hogar from './pages/Hogar'
+import Deportes from './pages/Deportes'
+import Tecnologia from './pages/Tecnologia';
+import Mascotas from './pages/Mascotas';
+import Accesorios from './pages/Accesorios';
+import Vestuario from './pages/Vestuario';
 
 function App() {
   return (
@@ -14,6 +21,13 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Home/>} />
+          <Route path='/hogar-y-jardin' element={<Hogar />} />
+          <Route path='/deportes' element={<Deportes />} />
+          <Route path='/tecnologia' element={<Tecnologia />} />
+          <Route path='/mascotas' element={<Mascotas />} />
+          <Route path='/accesorios' element={<Accesorios />} />
+          <Route path='/vestuario' element={<Vestuario />} />
+          <Route path='/product' element={<Product/>} />
           <Route path='/admin' element={<Admin />} />
         </Routes>
       </Router>

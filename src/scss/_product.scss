@@ -1,0 +1,50 @@
+@import '../main';
+
+.product-container {
+    width: 100%;
+    height: 100%;
+    padding: 2% 16%;
+    background-color: darken($white, 4.5);
+}
+
+.product-container__desc-content {
+    width: 100%;
+    height: 50vh;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    background-color: $white;
+
+    .desc-content__img-product {
+        width: 100%;
+        height: 100%;
+        display: flex;
+
+        .img-product__img {
+            width: 85%;
+            height: 100%;
+            background-image: url('../img/products/product-img-1.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    }
+
+    .img-product__carousel {
+        width: 15%;
+        height: 100%;
+        border-right: 0.1rem solid darken($white, 15);
+
+        .carousel__img {
+            width: 100%;
+            height: 8vh;
+            margin: auto;
+            margin-bottom: 1rem;
+            background-image: url('../img/products/product-img-1.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    }
+}

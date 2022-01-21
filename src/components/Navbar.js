@@ -18,33 +18,29 @@ const Navbar = () => {
                 <div className="header-container">
                     <Link className="header-container__title" to='/'>Tienda</Link>
                     <input className='header-container__search-bar' placeholder='Buscar Producto'></input>
-                    <div className='header-container__icon-info header-icons'>
-                        <BiInfoCircle />
+                    <div className='header-container__icon-content'>
+                        <div className='header-container__icon-info header-icons'>
+                            <BiInfoCircle />
+                        </div>
+                        <div className='header-container__icon-cart header-icons'>
+                            <BiCartAlt />
+                        </div>
+                        <div className='header-container__icon-login header-icons'>
+                           <BiUserCircle onClick={() => loginWithRedirect()}></BiUserCircle>
+                        </div>
                     </div>
-                    <div className='header-container__icon-cart header-icons'>
-                        <BiCartAlt />
-                    </div>
-                    <div className='header-container__icon-login header-icons'>
-                        <BiUserCircle />
-                    </div>
-                    <div className="collapse header-collapse" id="navbarSupportedContent">
-                        <ul className="nvbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <button className="btn btn-outline-primary" onClick={() => loginWithRedirect()}>Log In</button>
-                            </li>
-                        </ul>
-                    </div>
+                    
                 </div>
             </header>
 
             <nav className="navbar">
                 <ul className='navbar-list'>
-                    <li className='navbar-list__item'>Hogar y Jardin</li>
-                    <li className='navbar-list__item'>Deportes</li>
-                    <li className='navbar-list__item'>Tecnologia</li>
-                    <li className='navbar-list__item'>Mascotas</li>
-                    <li className='navbar-list__item'>Accesorios</li>
-                    <li className='navbar-list__item'>Vestuario</li>
+                    <Link to='/hogar-y-jardin' className='navbar-list__item'>Hogar y Jardin</Link>
+                    <Link to='/deportes' className='navbar-list__item'>Deportes</Link>
+                    <Link to='/tecnologia' className='navbar-list__item'>Tecnologia</Link>
+                    <Link to='/mascotas' className='navbar-list__item'>Mascotas</Link>
+                    <Link to='/accesorios' className='navbar-list__item'>Accesorios</Link>
+                    <Link to='/vestuario' className='navbar-list__item'>Vestuario</Link>
                 </ul>
             </nav>
         </>
