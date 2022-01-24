@@ -8,10 +8,15 @@ import '../scss/_catalog.scss'
 import { obtenerProductos } from '../utils/api';
 import { nanoid } from 'nanoid';
 
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+import ReactLoading from 'react-loading';
+
 const Home = () => {
     const [productos, setProductos] = useState([]);
     const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
     const [loading, setLoading] = useState(false);
+    
 
     useEffect(() => {
         const fetchProductos = async () => {
@@ -52,22 +57,29 @@ const Home = () => {
                 </div>
             </div>
 
+            {
+                loading ?(
+                    <div className='loading'>
+                        <ReactLoading type='spin' color='blue' height={'20%'} width={'20%'} />
+                    </div>
+                ):(
+                    <div className='catalog'>
+                        <div className='catalog-container'>
+                            {productos.map(
+                                (productos) => {
+                                    return (                                    
+                                        <Link to="./Product">
+                                            <div className='product-card'>
+                                                <DatoProductos key={nanoid()} productos={productos} setEjecutarConsulta={setEjecutarConsulta} />;
+                                            </div>
+                                        </Link>                                       
+                                    )
+                                }
+                            )}
+                        </div>
+                    </div>
+                )}
             
-            <div className='catalog'>
-                <div className='catalog-container'>
-                    {productos.map(
-                        (productos) => {
-                            return (                                    
-                                <Link to="./Product">
-                                    <div className='product-card'>
-                                        <DatoProductos key={nanoid()} productos={productos} setEjecutarConsulta={setEjecutarConsulta} />;
-                                    </div>
-                                </Link>                                       
-                            )
-                        }
-                    )}
-                </div>
-            </div>
 
             <Footer />
 
@@ -88,6 +100,13 @@ const DatoProductos = ({ productos }) => {
                 <h3 className='product-card__title'>{productos.titulo}</h3>
                 <span className='product-card__price'>Precio: {productos.precio}</span>
                 <p className='product-card__desc'>{productos.descripcion}</p>
+                <Box
+                    sx={{
+                        '& > legend': { mt: 2 },
+                    }}
+                >
+                    <Rating name="half-rating-read" defaultValue={productos.puntuacion} precision={0.5} readOnly />
+                </Box>
             </div>
         </>
     )

@@ -7,6 +7,9 @@ import '../scss/_banner.scss'
 import '../scss/_catalog.scss'
 import { obtenerHogar } from '../utils/api';
 import { nanoid } from 'nanoid';
+import ReactLoading from 'react-loading'
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
 
 const Hogar = () => {
     const [productos, setProductos] = useState([]);
@@ -55,21 +58,29 @@ const Hogar = () => {
         <h2>Hogar y Jardín</h2>
 
 
-        <div className='catalog'>
-            <div className='catalog-container'>
-                {productos.map(
-                    (productos) => {
-                        return (                                    
-                            <Link to="./Product">
-                                <div className='product-card'>
-                                    <DatoProductos key={nanoid()} productos={productos} setEjecutarConsulta={setEjecutarConsulta} />;
-                                </div>
-                            </Link>                                       
-                        )
-                    }
-                )}
-            </div>
-        </div>
+        {
+            loading ?(
+                <div className='loading'>
+                    <ReactLoading type='spin' color='blue' height={'20%'} width={'20%'} />
+                </div>
+            ):(
+                <div className='catalog'>
+                    <div className='catalog-container'>
+                        {productos.map(
+                            (productos) => {
+                                return (                                    
+                                    <Link to="./Product">
+                                        <div className='product-card'>
+                                            <DatoProductos key={nanoid()} productos={productos} setEjecutarConsulta={setEjecutarConsulta} />;
+                                        </div>
+                                    </Link>                                       
+                                )
+                            }
+                        )}
+                    </div>
+                </div>
+            )
+        }
 
         <Footer />
     </>
@@ -86,6 +97,13 @@ const DatoProductos = ({ productos }) => {
                 <h3 className='product-card__title'>{productos.titulo}</h3>
                 <span className='product-card__price'>Precio: {productos.precio}</span>
                 <p className='product-card__desc'>{productos.descripcion}</p>
+                <Box
+                    sx={{
+                        '& > legend': { mt: 2 },
+                    }}
+                >
+                    <Rating name="half-rating-read" defaultValue={productos.puntuacion} precision={0.5} readOnly />
+                </Box>
             </div>
         </>
     )
