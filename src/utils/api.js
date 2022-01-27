@@ -16,6 +16,20 @@ export const obtenerProductos = async (successCallback, errorCallback) => {
   .catch(errorCallback);
 };
 
+//obtener el producto elegido
+export const ProductoElegido = async (id, successCallback, errorCallback) => {
+  const options = {
+      method: 'GET',
+      url: `http://localhost:5000/productos/${id}`,
+      headers:{
+        Authorization : getToken()
+      },
+    };
+    await axios.request(options)
+    .then(successCallback)
+    .catch(errorCallback);
+};
+
 //obtener hogar
 export const obtenerHogar = async (successCallback, errorCallback) => {
   const options = { method: 'GET', 

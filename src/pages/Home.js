@@ -60,7 +60,7 @@ const Home = () => {
             {
                 loading ?(
                     <div className='loading'>
-                        <ReactLoading type='spin' color='blue' height={'20%'} width={'20%'} />
+                        <ReactLoading type='spin' color='blue' height={'15%'} width={'15%'} />
                     </div>
                 ):(
                     <div className='catalog'>
@@ -68,7 +68,7 @@ const Home = () => {
                             {productos.map(
                                 (productos) => {
                                     return (                                    
-                                        <Link to="./Product">
+                                        <Link to={`/product/id=${productos._id}`}>
                                             <div className='product-card'>
                                                 <DatoProductos key={nanoid()} productos={productos} setEjecutarConsulta={setEjecutarConsulta} />;
                                             </div>
@@ -91,7 +91,7 @@ const Home = () => {
 };
 
 const DatoProductos = ({ productos }) => {
-    console.log('Productos: ', productos);
+    console.log('id desde datoproducto: ', productos._id);
 
     return (
         <>
