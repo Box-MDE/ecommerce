@@ -45,52 +45,53 @@ const Accesorios = () => {
             setEjecutarConsulta(true);
         }, []);
 
-  return (
-    <>
-        <Navbar />
-
-        <div className="banner">
-            <div className="banner-container">
-                <div className='banner-container__cover'></div>
-                <h1 className='banner-container__title'>Titulo del Banner</h1>
-            </div>
-        </div>
-
-
-        <h2>Accesorios</h2>
-
-
-        {
-            loading ?(
-                <div className='loading'>
-                    <ReactLoading type='spin' color='blue' height={'20%'} width={'20%'} />
-                </div>
-            ):(
-                <div className='catalog'>
-                    <div className='catalog-container'>
-                        {productos.map(
-                            (productos) => {
-                                return (                                    
-                                    <Link to="./Product">
-                                        <div className='product-card'>
-                                            <DatoProductos key={nanoid()} productos={productos} setEjecutarConsulta={setEjecutarConsulta} />;
-                                        </div>
-                                    </Link>                                       
-                                )
-                            }
-                        )}
+        return (
+            <>
+                <Navbar />
+    
+                <div className="banner">
+                    <div className="banner-container">
+                        <div className='banner-container__cover'></div>
+                        <h1 className='banner-container__title'>Titulo del Banner</h1>
                     </div>
                 </div>
-            )
-        }
-
-        <Footer />
-    </>
-  );
-};
+    
+                {
+                    loading ?(
+                        <div className='loading'>
+                            <ReactLoading type='spin' color='blue' height={'15%'} width={'15%'} />
+                        </div>
+                    ):(
+                        <div className='catalog'>
+                            <div className='catalog-container'>
+                                {productos.map(
+                                    (productos) => {
+                                        return (                                    
+                                            <Link to={`/product/accesorios%20%id=${productos._id}`}>
+                                                <div className='product-card'>
+                                                    <DatoProductos key={nanoid()} productos={productos} setEjecutarConsulta={setEjecutarConsulta} />;
+                                                </div>
+                                            </Link>                                       
+                                        )
+                                    }
+                                )}
+                            </div>
+                        </div>
+                    )
+                }
+                
+    
+                <Footer />
+    
+                
+            </>
+    
+            
+        )
+    };
 
 const DatoProductos = ({ productos }) => {
-    console.log('Productos: ', productos);
+    console.log('id desde datoproducto: ', productos._id);
 
     return (
         <>

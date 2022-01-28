@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { ProductoElegido } from '../utils/api'
@@ -8,39 +8,43 @@ import '../scss/_product.scss'
 
 const Product = () => {
 
+    const isMounted = useIsMounted();
     let { id } = useParams();
     const [productos, setProductos] = useState([]);
     const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-      const fetchProductos = async () => {
-        setLoading(true);
-            await ProductoElegido(
-                id,
-                (response) => {
-                  console.log('la respuesta que se recibio fue', response);
-                  setProductos(response.data);
-                  setEjecutarConsulta(false);
-                  setLoading(false);
-                  console.log('producto traido' ,productos)
-                },
-                (error) => {
-                  console.error('Salio un error:', error);
-                  setLoading(false);
-                }
-              );
-            };
-            console.log('consulta', ejecutarConsulta);
-            if (ejecutarConsulta) {
-              fetchProductos();
+      if (isMounted.current){
+        const fetchProductos = async () => {
+          setLoading(true);
+          await ProductoElegido(
+            id,
+            (response) => {
+              console.log('la respuesta que se recibio fue', response);
+              setProductos(response.data);
+              setEjecutarConsulta(false);
+              setLoading(false);
+              console.log('producto traido' ,productos)
+            },
+            (error) => {
+              console.error('Salio un error:', error);
+              setLoading(false);
             }
-          }, [ejecutarConsulta, productos, id]);
+          );
+        };
+        console.log('consulta', ejecutarConsulta);
+        if (ejecutarConsulta) {
+          fetchProductos();
+        }
+      }
+      
+    }, [ejecutarConsulta, productos, id, isMounted]);
         
-          useEffect(() => {
-            //obtener lista de vehículos desde el backend
-              setEjecutarConsulta(true);
-          }, []);
+    useEffect(() => {
+      //obtener lista de vehículos desde el backend
+      setEjecutarConsulta(true);
+    }, []);
 
     return (
         <>
@@ -61,7 +65,7 @@ const Product = () => {
                     <div className='desc-content__resume-product'>
                         <span>{productos.titulo}</span>
                         <h2>{productos.descripcion}</h2>
-                        <span> ${productos.precio}</span>
+                        <span><p> $ {productos.precio}</p></span>
                         <span><br></br>Formas de Pago</span>
                     </div>
                 </div>
@@ -75,5 +79,14 @@ const Product = () => {
         </>
     )
 }
+
+const useIsMounted = () => {
+  const isMounted = useRef(false);
+  useEffect(() => {
+    isMounted.current = true;
+    return () => (isMounted.current = false);
+  }, []);
+  return isMounted;
+};
 
 export default Product
