@@ -7,6 +7,9 @@ import '../scss/_banner.scss'
 import '../scss/_catalog.scss'
 import { obtenerMascotas } from '../utils/api';
 import { nanoid } from 'nanoid';
+import ReactLoading from 'react-loading'
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
 
 
 const Mascotas = () => {
@@ -43,44 +46,53 @@ const Mascotas = () => {
             setEjecutarConsulta(true);
         }, []);
 
-  return (
-    <>
-        <Navbar />
-
-        <div className="banner">
-            <div className="banner-container">
-                <div className='banner-container__cover'></div>
-                <h1 className='banner-container__title'>Titulo del Banner</h1>
-            </div>
-        </div>
-
-
-        <h2>Mascotas</h2>
-
-
-        <div className='catalog'>
-            <div className='catalog-container'>
-                {productos.map(
-                    (productos) => {
-                        return (                                    
-                            <Link to="./Product">
-                                <div className='product-card'>
-                                    <DatoProductos key={nanoid()} productos={productos} setEjecutarConsulta={setEjecutarConsulta} />;
-                                </div>
-                            </Link>                                       
-                        )
-                    }
-                )}
-            </div>
-        </div>
-
-        <Footer />
-    </>
-  );
-};
+        return (
+            <>
+                <Navbar />
+    
+                <div className="banner">
+                    <div className="banner-container">
+                        <div className='banner-container__cover'></div>
+                        <h1 className='banner-container__title'>Titulo del Banner</h1>
+                    </div>
+                </div>
+    
+                {
+                    loading ?(
+                        <div className='loading'>
+                            <ReactLoading type='spin' color='blue' height={'15%'} width={'15%'} />
+                        </div>
+                    ):(
+                        <div className='catalog'>
+                            <div className='catalog-container'>
+                                {productos.map(
+                                    (productos) => {
+                                        return (                                    
+                                            <Link to={`/product/mascotas%20%id=${productos._id}`}>
+                                                <div className='product-card'>
+                                                    <DatoProductos key={nanoid()} productos={productos} setEjecutarConsulta={setEjecutarConsulta} />;
+                                                </div>
+                                            </Link>                                       
+                                        )
+                                    }
+                                )}
+                            </div>
+                        </div>
+                    )
+                }
+                
+    
+                <Footer />
+    
+                
+            </>
+    
+            
+        )
+    };
 
 const DatoProductos = ({ productos }) => {
-    console.log('Productos: ', productos);
+    console.log('id desde datoproducto: ', productos._id);
 
     return (
         <>
@@ -89,6 +101,13 @@ const DatoProductos = ({ productos }) => {
                 <h3 className='product-card__title'>{productos.titulo}</h3>
                 <span className='product-card__price'>Precio: {productos.precio}</span>
                 <p className='product-card__desc'>{productos.descripcion}</p>
+                <Box
+                    sx={{
+                        '& > legend': { mt: 2 },
+                    }}
+                >
+                    <Rating name="half-rating-read" defaultValue={productos.puntuacion} precision={0.5} readOnly />
+                </Box>
             </div>
         </>
     )

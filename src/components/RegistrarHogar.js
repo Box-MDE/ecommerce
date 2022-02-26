@@ -6,8 +6,11 @@ import { Button } from '@mui/material'
 import axios from 'axios'
 import 'react-toastify/dist/ReactToastify.css'
 import { toast, ToastContainer } from 'react-toastify'
+import Viewer from 'react-viewer'
 
 const RegistrarHogar = () => {
+
+    const [ visible, setVisible ] = useState(false);
 
     const [datos, setDatos] = useState({
         titulo:'',
@@ -41,7 +44,7 @@ const RegistrarHogar = () => {
         .then(function (response) {
             console.log(response.data);
             toast.success('Producto creado con éxito');
-            window.location='/admin';
+            window.Location='/admin';
         });
     }
     
@@ -94,6 +97,12 @@ const RegistrarHogar = () => {
                         name='url'
                         type='url'
                         onChange={handleChange}
+                    />
+                    <button onClick={(e) => { setVisible(true); e.preventDefault(); } }>show</button>
+                    <Viewer
+                        visible={visible}
+                        onClose={() => { setVisible(false); } }
+                        images={[{src: datos.url, alt: ''}]}
                     />
                 </Box>
                 <Button type="submit" className="button mt-3 mb-5" variant="contained">submit</Button>
