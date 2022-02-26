@@ -5,6 +5,8 @@ import { ProductoElegido } from '../utils/api'
 import { useParams } from 'react-router-dom'
 import '../_main.scss'
 import '../scss/_product.scss'
+import { Link } from 'react-router-dom';
+
 
 const Product = () => {
 
@@ -45,6 +47,7 @@ const Product = () => {
       //obtener lista de vehículos desde el backend
       setEjecutarConsulta(true);
     }, []);
+    
 
     return (
         <>
@@ -67,6 +70,15 @@ const Product = () => {
                         <h2>{productos.descripcion}</h2>
                         <span><p> $ {productos.precio}</p></span>
                         <span><br></br>Formas de Pago</span>
+
+                        <form>
+                          <Link to={`/create-checkout-session/id=${productos._id}`}>
+                            <button type='submit'>
+                              checkout
+                            </button>
+                          </Link>
+                        </form>
+
                     </div>
                 </div>
 

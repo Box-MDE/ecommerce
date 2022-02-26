@@ -9,6 +9,7 @@ import Tecnologia from './pages/Tecnologia';
 import Mascotas from './pages/Mascotas';
 import Accesorios from './pages/Accesorios';
 import Vestuario from './pages/Vestuario';
+import Pago from './pages/Pago';
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
           <Route path='/accesorios' element={<Accesorios />} />
           <Route path='/vestuario' element={<Vestuario />} />
           <Route path='/product/:id' element={<Product />} />
+
+          <Route path='/create-checkout-session/:id' element={<Pago/>} />
             
           
           <Route path='/admin' element={<Admin />} />
