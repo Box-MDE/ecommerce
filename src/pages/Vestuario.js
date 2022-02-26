@@ -5,23 +5,22 @@ import { Link } from 'react-router-dom';
 import '../_main.scss'
 import '../scss/_banner.scss'
 import '../scss/_catalog.scss'
-import { obtenerProductos } from '../utils/api';
+import { obtenerVestuario } from '../utils/api';
 import { nanoid } from 'nanoid';
-
+import ReactLoading from 'react-loading'
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
-import ReactLoading from 'react-loading';
 
-const Home = () => {
+const Vestuario = () => {
+
     const [productos, setProductos] = useState([]);
     const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
     const [loading, setLoading] = useState(false);
-    
 
     useEffect(() => {
         const fetchProductos = async () => {
             setLoading(true);
-            await obtenerProductos(
+            await obtenerVestuario(
               (response) => {
                 console.log('la respuesta que se recibio fue', response);
                 setProductos(response.data);
@@ -46,49 +45,50 @@ const Home = () => {
             setEjecutarConsulta(true);
         }, []);
 
-    return (
-        <>
-            <Navbar />
-
-            <div className="banner">
-                <div className="banner-container">
-                    <div className='banner-container__cover'></div>
-                    <h1 className='banner-container__title'>Titulo del Banner</h1>
+        return (
+            <>
+                <Navbar />
+    
+                <div className="banner">
+                    <div className="banner-container">
+                        <div className='banner-container__cover'></div>
+                        <h1 className='banner-container__title'>Titulo del Banner</h1>
+                    </div>
                 </div>
-            </div>
-
-            {
-                loading ?(
-                    <div className='loading'>
-                        <ReactLoading type='spin' color='blue' height={'15%'} width={'15%'} />
-                    </div>
-                ):(
-                    <div className='catalog'>
-                        <div className='catalog-container'>
-                            {productos.map(
-                                (productos) => {
-                                    return (                                    
-                                        <Link to={`/product/id=${productos._id}`}>
-                                            <div className='product-card'>
-                                                <DatoProductos key={nanoid()} productos={productos} setEjecutarConsulta={setEjecutarConsulta} />;
-                                            </div>
-                                        </Link>                                       
-                                    )
-                                }
-                            )}
+    
+                {
+                    loading ?(
+                        <div className='loading'>
+                            <ReactLoading type='spin' color='blue' height={'15%'} width={'15%'} />
                         </div>
-                    </div>
-                )}
+                    ):(
+                        <div className='catalog'>
+                            <div className='catalog-container'>
+                                {productos.map(
+                                    (productos) => {
+                                        return (                                    
+                                            <Link to={`/product/vestuario%20%id=${productos._id}`}>
+                                                <div className='product-card'>
+                                                    <DatoProductos key={nanoid()} productos={productos} setEjecutarConsulta={setEjecutarConsulta} />;
+                                                </div>
+                                            </Link>                                       
+                                        )
+                                    }
+                                )}
+                            </div>
+                        </div>
+                    )
+                }
+                
+    
+                <Footer />
+    
+                
+            </>
+    
             
-
-            <Footer />
-
-            
-        </>
-
-        
-    )
-};
+        )
+    };
 
 const DatoProductos = ({ productos }) => {
     console.log('id desde datoproducto: ', productos._id);
@@ -112,4 +112,4 @@ const DatoProductos = ({ productos }) => {
     )
 }
 
-export default Home
+export default Vestuario;
