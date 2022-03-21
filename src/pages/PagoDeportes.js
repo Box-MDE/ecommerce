@@ -1,12 +1,11 @@
 import React, {useEffect, useState, useRef} from 'react'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
-import { ProductoElegido } from '../utils/api'
+import { ProductoElegidoDeportes } from '../utils/api'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
 const stripePromise = loadStripe("pk_test_51KT6GAHmlqUgkF453XnfypA81fsfLiEo9chFIjbJvz6k1bFbQ62ZV3bcHpeEcUYWnoplK2wrAwmul0JCfyXn91Fp00PniOhUiL")
-
 
 const CheckoutForm = () => {
 
@@ -20,7 +19,7 @@ const CheckoutForm = () => {
       if (isMounted.current){
         const fetchProductos = async () => {
           setLoading(true);
-          await ProductoElegido(
+          await ProductoElegidoDeportes(
             id,
             (response) => {
               console.log('la respuesta que se recibio en pago fue', response);
@@ -90,12 +89,12 @@ const CheckoutForm = () => {
     </form>
 }
 
-const Pago = () => {
-  return (
-  <Elements stripe={stripePromise}>
-      <CheckoutForm />
-  </Elements>
-  );
+const PagoDeportes = () => {
+    return (
+        <Elements stripe={stripePromise}>
+            <CheckoutForm />
+        </Elements>
+        );
 };
 
 const useIsMounted = () => {
@@ -107,4 +106,4 @@ const useIsMounted = () => {
     return isMounted;
 };
 
-export default Pago;
+export default PagoDeportes
