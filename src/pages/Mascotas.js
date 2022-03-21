@@ -68,7 +68,7 @@ const Mascotas = () => {
                                 {productos.map(
                                     (productos) => {
                                         return (                                    
-                                            <Link to={`/product/mascotas%20%id=${productos._id}`}>
+                                            <Link to={`/mascotas/id=${productos._id}`}>
                                                 <div className='product-card'>
                                                     <DatoProductos key={nanoid()} productos={productos} setEjecutarConsulta={setEjecutarConsulta} />;
                                                 </div>
