@@ -30,6 +30,90 @@ export const ProductoElegido = async (id, successCallback, errorCallback) => {
     .catch(errorCallback);
 };
 
+//obtener el producto elegido hogar
+export const ProductoElegidoHogar = async (id, successCallback, errorCallback) => {
+  const options = {
+      method: 'GET',
+      url: `http://localhost:5000/hogar/${id}`,
+      headers:{
+        Authorization : getToken()
+      },
+    };
+    await axios.request(options)
+    .then(successCallback)
+    .catch(errorCallback);
+};
+
+//obtener el producto elegido deportes
+export const ProductoElegidoDeportes = async (id, successCallback, errorCallback) => {
+  const options = {
+      method: 'GET',
+      url: `http://localhost:5000/deportes/${id}`,
+      headers:{
+        Authorization : getToken()
+      },
+    };
+    await axios.request(options)
+    .then(successCallback)
+    .catch(errorCallback);
+};
+
+//obtener el producto elegido tecnologia
+export const ProductoElegidoTecnologia = async (id, successCallback, errorCallback) => {
+  const options = {
+      method: 'GET',
+      url: `http://localhost:5000/tecnologia/${id}`,
+      headers:{
+        Authorization : getToken()
+      },
+    };
+    await axios.request(options)
+    .then(successCallback)
+    .catch(errorCallback);
+};
+
+//obtener el producto elegido mascotas
+export const ProductoElegidoMascotas = async (id, successCallback, errorCallback) => {
+  const options = {
+      method: 'GET',
+      url: `http://localhost:5000/mascotas/${id}`,
+      headers:{
+        Authorization : getToken()
+      },
+    };
+    await axios.request(options)
+    .then(successCallback)
+    .catch(errorCallback);
+};
+
+//obtener el producto elegido accesorios
+export const ProductoElegidoAccesorios = async (id, successCallback, errorCallback) => {
+  const options = {
+      method: 'GET',
+      url: `http://localhost:5000/accesorios/${id}`,
+      headers:{
+        Authorization : getToken()
+      },
+    };
+    await axios.request(options)
+    .then(successCallback)
+    .catch(errorCallback);
+};
+
+//obtener el producto elegido vesturio
+export const ProductoElegidoVestuariio = async (id, successCallback, errorCallback) => {
+  const options = {
+      method: 'GET',
+      url: `http://localhost:5000/vestuario/${id}`,
+      headers:{
+        Authorization : getToken()
+      },
+    };
+    await axios.request(options)
+    .then(successCallback)
+    .catch(errorCallback);
+};
+
 //obtener hogar
 export const obtenerHogar = async (successCallback, errorCallback) => {
   const options = { method: 'GET', 

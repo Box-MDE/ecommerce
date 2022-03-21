@@ -67,7 +67,7 @@ const Tecnologia = () => {
                                 {productos.map(
                                     (productos) => {
                                         return (                                    
-                                            <Link to={`/product/tecnologia%20%id=${productos._id}`}>
+                                            <Link to={`/tecnologia/id=${productos._id}`}>
                                                 <div className='product-card'>
                                                     <DatoProductos key={nanoid()} productos={productos} setEjecutarConsulta={setEjecutarConsulta} />;
                                                 </div>
