@@ -5,7 +5,8 @@ import { ProductoElegidoDeportes } from '../utils/api'
 import { useParams } from 'react-router-dom'
 import '../_main.scss'
 import '../scss/_product.scss'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import { Button } from 'reactstrap'
 
 const ProductDeportes = () => {
     const isMounted = useIsMounted();
@@ -54,11 +55,6 @@ const ProductDeportes = () => {
             <div className='product-container'>
                 <div className='product-container__desc-content'>
                     <div className='desc-content__img-product'>
-                        <div className='img-product__carousel'>
-                            <div className='carousel__img'></div>
-                            <div className='carousel__img'></div>
-                            <div className='carousel__img'></div>
-                        </div>
                         <div className='img-product__img'>
                         <img className='img-product_fetch' src={productos.url} alt={productos.titulo} />
                         </div>
@@ -71,9 +67,9 @@ const ProductDeportes = () => {
 
                         <form>
                         <Link to={`/deportes/create-checkout-session/id=${productos._id}`}>
-                            <button type='submit'>
-                            checkout
-                            </button>
+                            <Button className='pr-3 pl-3 pt-3 pb-3' outline color="primary" type='submit'>
+                              checkout
+                            </Button>
                         </Link>
                         </form>
 
